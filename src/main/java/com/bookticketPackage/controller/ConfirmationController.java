@@ -2,7 +2,7 @@ package com.bookticketPackage.controller;
 
 import com.bookticketPackage.dto.ConfirmationDto;
 import com.bookticketPackage.service.ConfirmationService;
-import com.bookticketPackage.model.Confirmation;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
