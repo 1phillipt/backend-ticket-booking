@@ -12,24 +12,27 @@ import java.util.Optional;
 public class LoginService {
 
     private LoginRepository loginRepository;
-    public LoginService( LoginRepository loginRepository){
+
+    public LoginService(LoginRepository loginRepository) {
         this.loginRepository = loginRepository;
     }
 
-    public String verifyLogin(LoginDto loginDto){
+    public Long verifyLogin(LoginDto loginDto) {
 //
 //        loginRepository.insertCustomerEmailPasswordToLogin();
+        Optional<Login> optionalLogin = loginRepository.findByEmail(loginDto.getEmail());
 
-        Optional<Login> optionalLogin = loginRepository.findById(loginDto.getEmail());
-        System.out.println(optionalLogin);
-        if( optionalLogin.isPresent() && optionalLogin.get().getPassword().equals(loginDto.getPassword())) {
+        //System.out.println(optionalLogin);
 
-            return "login successful";
-        }else {
-            if(optionalLogin.isPresent() && !optionalLogin.get().getPassword().equals(loginDto.getPassword())){
-                return "password did not match";
-            };
+        if (optionalLogin.isPresent() && optionalLogin.get().getPassword().equals(loginDto.getPassword())) {
+
+            return optionalLogin.get().getCustomerId();
+        } else {
+            if (optionalLogin.isPresent() && !optionalLogin.get().getPassword().equals(loginDto.getPassword())) {
+                return null;
+            }
         }
-        return "email not found";
+        return null;
     }
+
 }

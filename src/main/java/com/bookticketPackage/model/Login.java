@@ -1,10 +1,7 @@
 package com.bookticketPackage.model;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 
@@ -15,6 +12,10 @@ import lombok.*;
 @AllArgsConstructor
 public class Login {
     @Id
+    private long customerId;
+    @OneToOne(optional = false)
+    @JoinColumn(name = "customer_id", nullable = false)
+    private Customer customer;
     private String email;
     private String password;
 }

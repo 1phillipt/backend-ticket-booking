@@ -7,8 +7,13 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 @Repository
 public interface LoginRepository extends JpaRepository<Login,String> {
+
+    @Query(value = "SELECT * FROM ticket_booking.login where email =:email", nativeQuery = true)
+    Optional<Login> findByEmail(String email);
 
 //    @Modifying
 //    @Transactional

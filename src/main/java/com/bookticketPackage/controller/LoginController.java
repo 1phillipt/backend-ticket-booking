@@ -17,7 +17,12 @@ public class LoginController {
     }
 
     @PostMapping("/verify")
-    public ResponseEntity<String> verifyLogin(@RequestBody LoginDto loginDto){
-        return ResponseEntity.ok().body(loginService.verifyLogin(loginDto));
+    public ResponseEntity<Long> verifyLogin(@RequestBody LoginDto loginDto){
+        if (loginService.verifyLogin(loginDto) != null) {
+            return ResponseEntity.ok(loginService.verifyLogin(loginDto));
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+        //System.out.println(ResponseEntity.ok().body(loginService.verifyLogin(loginDto)));
     }
 }

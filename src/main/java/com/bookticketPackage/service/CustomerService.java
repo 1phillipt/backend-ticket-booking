@@ -21,13 +21,13 @@ public class CustomerService {
     }
 
     //saves new customer
-    public String save(CustomerDto customerDto) {
+    public Long save(CustomerDto customerDto) {
        Optional<Customer> customerOptional = customerRepository.findByEmailOrPhone(customerDto.getEmail(),customerDto.getPhoneNumber());
        if(customerOptional.isPresent()){
-           return "user already exist";
+           return null;
        }else {
            customerRepository.save(CustomerMapper.customerDtoToCustomer(customerDto));
-           return "User create";
+           return customerOptional.get().getCustomerId();
        }
 
     }

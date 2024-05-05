@@ -24,7 +24,7 @@ public class CustomerController {
     //save customer info
     //http://localhost:8081/api/v1/customer
     @PostMapping
-    public ResponseEntity<String> saveCustomer(@RequestBody CustomerDto customerDto){
+    public ResponseEntity<Long> saveCustomer(@RequestBody CustomerDto customerDto){
         return ResponseEntity.ok(customerService.save(customerDto));
     }
     //save customer infos
