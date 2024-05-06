@@ -7,6 +7,7 @@ import com.bookticketPackage.repository.PaymentInfoRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -19,11 +20,12 @@ public class PaymentInfoService {
 
     //save paymentInfo
     public String save(PaymentInfoDto paymentInfoDto) {
-        if(!paymentInfoRepository.existsById(paymentInfoDto.getPaymentInfoId()) == true){
+
+        if(paymentInfoRepository.findBycardNumberAndCustomerId(paymentInfoDto.getCardNumber(),paymentInfoDto.getCustomerId()).isPresent()){
+            return "paymentInfo already exist";
+        }else{
             paymentInfoRepository.save(PaymentInfoMapper.paymentInfoDtoToPaymentInfo(paymentInfoDto));
             return "payment info saved";
-        }else{
-            return "paymentInfo already exist";
         }
     }
     //returns all the payment info in the table
@@ -33,6 +35,7 @@ public class PaymentInfoService {
                 .map(paymentInfo -> PaymentInfoMapper.paymentInfoToPaymentInfoDto(paymentInfo))
                 .collect(Collectors.toList());
     }
+
 
     public String deletePaymentInfoById(long id) {
         if(paymentInfoRepository.existsById(id)){
@@ -72,5 +75,10 @@ public class PaymentInfoService {
 
         paymentInfoRepository.saveAll(paymentInfoList);
         return "saved";
+    }
+
+    public List<PaymentInfoDto> listOfPaymentInfoByCustomerId(long customerId) {
+        List<PaymentInfo> paymentInfoList = paymentInfoRepository.listOfPaymentInfoByCustomerId(customerId);
+         return paymentInfoList.stream().map(paymentInfo -> PaymentInfoMapper.paymentInfoToPaymentInfoDto(paymentInfo)).collect(Collectors.toList());
     }
 }

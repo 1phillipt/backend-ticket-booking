@@ -19,7 +19,9 @@ public class PaymentInfoController {
     //Saves the payment info
     @PostMapping
     public ResponseEntity<String> save(@RequestBody PaymentInfoDto paymentInfoDto){
+
         return ResponseEntity.ok().body(paymentInfoService.save(paymentInfoDto));
+
     }
     @PostMapping("/paymentinfos")
     public ResponseEntity<String> saveaPaymentInfos(@RequestBody List<PaymentInfoDto> paymentInfoDto){
@@ -30,6 +32,14 @@ public class PaymentInfoController {
     public ResponseEntity<List<PaymentInfoDto>>  getAllPaymentInfo(){
         return ResponseEntity.ok().body(paymentInfoService.getAllPaymentInfo());
     }
+
+    //get payment info by customer Id
+    @GetMapping("/{customerId}")
+    public ResponseEntity<List<PaymentInfoDto>> listOfPaymentInfoByCustomerId(@PathVariable("customerId") long cusId){
+        //System.out.println(paymentInfoService.listOfPaymentInfoByCustomerId(customerId));
+        return ResponseEntity.ok().body(paymentInfoService.listOfPaymentInfoByCustomerId(cusId));
+    }
+
     //delete payment info by id
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deletePaymentInfoById(@PathVariable("id") long id){
