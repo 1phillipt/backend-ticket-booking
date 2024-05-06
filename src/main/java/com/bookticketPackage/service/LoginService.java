@@ -35,4 +35,9 @@ public class LoginService {
         return null;
     }
 
+    public void saveNewlyCreatedCustomer(LoginDto loginDto){
+        System.out.println(loginDto);
+        loginRepository.save(LoginMapper.loginDtoToLogin(loginDto));
+    }
+
 }

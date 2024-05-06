@@ -15,7 +15,7 @@ import java.util.List;
 @RequestMapping("/api/v1/customer")
 public class CustomerController {
 
-    private final CustomerService customerService;
+    private  CustomerService customerService;
 
     public CustomerController(com.bookticketPackage.service.CustomerService customerService ){
         this.customerService = customerService;
@@ -24,7 +24,7 @@ public class CustomerController {
     //save customer info
     //http://localhost:8081/api/v1/customer
     @PostMapping
-    public ResponseEntity<Long> saveCustomer(@RequestBody CustomerDto customerDto){
+    public ResponseEntity<String> saveCustomer(@RequestBody CustomerDto customerDto){
         return ResponseEntity.ok(customerService.save(customerDto));
     }
     //save customer infos

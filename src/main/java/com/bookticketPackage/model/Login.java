@@ -13,9 +13,6 @@ import lombok.*;
 public class Login {
     @Id
     private long customerId;
-    @OneToOne(optional = false)
-    @JoinColumn(name = "customer_id", nullable = false)
-    private Customer customer;
     private String email;
     private String password;
 }

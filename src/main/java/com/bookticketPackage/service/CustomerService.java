@@ -1,8 +1,11 @@
 package com.bookticketPackage.service;
 
 import com.bookticketPackage.dto.CustomerDto;
+import com.bookticketPackage.dto.LoginDto;
 import com.bookticketPackage.mapper.CustomerMapper;
+import com.bookticketPackage.mapper.LoginMapper;
 import com.bookticketPackage.model.Customer;
+import com.bookticketPackage.model.Login;
 import com.bookticketPackage.repository.CustomerRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,19 +18,27 @@ import java.util.stream.Collectors;
 
 public class CustomerService {
     private CustomerRepository customerRepository;
+    private LoginService loginService;
 
-    public CustomerService(CustomerRepository customerRepository) {
+    public CustomerService(CustomerRepository customerRepository, LoginService loginService) {
         this.customerRepository = customerRepository;
+        this.loginService =loginService;
     }
 
     //saves new customer
-    public Long save(CustomerDto customerDto) {
+    public String save(CustomerDto customerDto) {
        Optional<Customer> customerOptional = customerRepository.findByEmailOrPhone(customerDto.getEmail(),customerDto.getPhoneNumber());
        if(customerOptional.isPresent()){
-           return null;
+           return "exist";
        }else {
            customerRepository.save(CustomerMapper.customerDtoToCustomer(customerDto));
-           return customerOptional.get().getCustomerId();
+
+           //gets the id from email and phone number from custom query
+          Long customerId = customerRepository.findByEmailOrPhone(customerDto.getEmail(),customerDto.getPhoneNumber()).get().getCustomerId();
+
+          //saves newly created user along with the customer id got from above line of code
+           loginService.saveNewlyCreatedCustomer(LoginDto.builder().customerId(customerId).email(customerDto.getEmail()).password(customerDto.getPassword()).build());
+           return "login created";
        }
 
     }
