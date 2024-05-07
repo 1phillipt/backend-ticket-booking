@@ -22,7 +22,7 @@ public class TicketService {
 
     //save tickets
     public String save(TicketDto ticketDto) {
-        Optional<Ticket> optionalTicket = ticketRepository.findById(ticketDto.getTicketID());
+        Optional<Ticket> optionalTicket = ticketRepository.findById(ticketDto.getTicketId());
 
         if(optionalTicket.isPresent()){
             return "user already exist";

@@ -13,8 +13,9 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class TicketDto {
-    private long ticketID;
-    private long eventID;
-    private long customerID;
+    private long ticketId;
+    private long eventId;
+    private long customerId;
+    private long seatId;
 }
 

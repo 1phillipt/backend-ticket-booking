@@ -16,16 +16,16 @@ public class TicketMapper {
 
     public static TicketDto ticketToTicketDto(Ticket ticket){
         return TicketDto.builder()
-                .ticketID(ticket.getTicketId())
-                .eventID(ticket.getEvent().getEventId())
+                .ticketId(ticket.getTicketId())
+                .eventId(ticket.getEvent().getEventId())
                 //.customerID(ticket.getCustomer().getCustomerId())
                 .build();
     }
 
     public static Ticket ticketDtoToTicket(TicketDto ticketDto){
         return Ticket.builder()
-                .ticketId(ticketDto.getTicketID())
-                .event(Event.builder().eventId(ticketDto.getEventID()).build())
+                .ticketId(ticketDto.getTicketId())
+                .event(Event.builder().eventId(ticketDto.getEventId()).build())
                 //.customer(Customer.builder().customerId(ticketDto.getCustomerID()).build())
                 .build();
     }
