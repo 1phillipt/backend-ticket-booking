@@ -45,6 +45,11 @@ public class PaymentInfoController {
     public ResponseEntity<String> deletePaymentInfoById(@PathVariable("id") long id){
         return ResponseEntity.ok().body(paymentInfoService.deletePaymentInfoById(id));
     }
+    @DeleteMapping("/{customerId}/{cardNumber}")
+    public ResponseEntity<String> deletePaymentInfoByCustomerId(@PathVariable("customerId") long customerId, @PathVariable("cardNumber") String cardNumber){
+        System.out.println("insidee delete mapping by cus id and card number");
+        return ResponseEntity.ok().body(paymentInfoService.deletePaymentInfoByCustomerIdAndCardNumber(customerId, cardNumber));
+    }
 
     //updatest the paymentinfo
 

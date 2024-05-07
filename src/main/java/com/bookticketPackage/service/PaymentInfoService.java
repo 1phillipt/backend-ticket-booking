@@ -81,4 +81,10 @@ public class PaymentInfoService {
         List<PaymentInfo> paymentInfoList = paymentInfoRepository.listOfPaymentInfoByCustomerId(customerId);
          return paymentInfoList.stream().map(paymentInfo -> PaymentInfoMapper.paymentInfoToPaymentInfoDto(paymentInfo)).collect(Collectors.toList());
     }
+
+    public String deletePaymentInfoByCustomerIdAndCardNumber(long customerId, String cardNumber) {
+        paymentInfoRepository.deletePaymentInfoByCustomerIdAndCardNumber(customerId, cardNumber);
+        return "deleted";
+
+    }
 }
