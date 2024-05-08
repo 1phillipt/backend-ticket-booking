@@ -34,9 +34,11 @@ public class TicketController {
 
     //returns tickets by event and seatId
     @GetMapping("/{eventId}/{seatNumber}")
-    public ResponseEntity<TicketDto> getByTicketId(@PathVariable("eventId") long eventId, @PathVariable("seatNumber") String seatNumber){
+    public ResponseEntity<TicketDto> getByTicketEventIdAndseatNumber(@PathVariable("eventId") long eventId, @PathVariable("seatNumber") String seatNumber){
+        System.out.println("inside getmapping ticket controller by eventid and seatNumber   "+ seatNumber + "event id "+ eventId);
         return ResponseEntity.ok().body(ticketService.getByEventIdAndSeatNumber(eventId,seatNumber));
     }
+
 
 
     @DeleteMapping("/{id}")

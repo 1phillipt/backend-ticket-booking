@@ -28,8 +28,11 @@ public class TicketService {
             return "user already exist";
         }else{
             ticketRepository.save(TicketMapper.ticketDtoToTicket(ticketDto));
-            return "Ticket created";
+
+
         }
+        ticketRepository.setSeatAvailableToNone(ticketDto.getSeatNumber());
+        return "Ticket created";
     }
 
     public List<TicketDto> getAllTickets() {
@@ -68,6 +71,6 @@ public class TicketService {
     }
 
     public TicketDto getByEventIdAndSeatNumber(long eventId, String seatNumber) {
-        return ticketRepository.getByEventIdAndSeatNumber(eventId,seatNumber);
+        return TicketMapper.ticketToTicketDto(ticketRepository.findByEventIdAndSeatNumber(eventId,seatNumber));
     }
 }
