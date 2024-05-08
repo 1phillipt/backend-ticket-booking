@@ -22,23 +22,11 @@ public class Confirmation {
     @Column(name = "confirmation_id")
     private long confirmationId;
 
-    @Column(name = "confirmation_date")
     private Date confimationDate;
 
-    @Column(name = "confirmation_code")
-    private String confirmationCode;// = String.valueOf(confirmationId + this.customer.getCustomerId());
+    private long ticketId;
 
+    private long customerId;
 
-    @OneToOne(optional = false)
-    @JoinColumn(name = "ticket_id", nullable = false)
-    private Ticket ticket;
-
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "customer_id", nullable = false)
-    private Customer customer;
-
-//    @OneToOne(cascade = CascadeType.ALL)
-//    @JoinColumn(name = "paymentInfoId")
-//    private PaymentInfo paymentInfo;
 
 }

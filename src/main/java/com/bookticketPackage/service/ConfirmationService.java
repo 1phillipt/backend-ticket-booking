@@ -46,9 +46,9 @@ public class ConfirmationService {
         }
     }
 
-    public Object[] collectConfirmationInfo(long confirmationId) {
-        return confirmationRepository.collectConfirmationInfo(confirmationId);
-    }
+//    public Object[] collectConfirmationInfo(long confirmationId) {
+//        return confirmationRepository.collectConfirmationInfo(confirmationId);
+//    }
 
 
     //delete confirmation by id
@@ -66,20 +66,5 @@ public class ConfirmationService {
 //    private String methodOfPayment;
 //    private String confirmationCode;
 //    private long customerId;
-    public String updateConfirmationById(long id, ConfirmationDto confirmationDto) {
-        Confirmation confirmationById = confirmationRepository.getById(id);
 
-        if(Double.isNaN(confirmationDto.getCustomerId())){
-            confirmationById.setConfirmationCode(confirmationDto.getConfirmationCode());
-        }
-        if (confirmationDto.getConfirmationDate() != null) {
-            confirmationById.setConfimationDate(confirmationDto.getConfirmationDate());
-        }
-
-        if (confirmationDto.getConfirmationCode() != null) {
-            confirmationById.setConfirmationCode(confirmationDto.getConfirmationCode());
-        }
-        confirmationRepository.save(confirmationById);
-        return id + " is updated";
-    }
 }

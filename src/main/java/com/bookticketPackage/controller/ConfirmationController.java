@@ -38,10 +38,10 @@ public class ConfirmationController {
 
     //compose cconfimation detail on the order
 
-    @GetMapping("/confirmationdetail/{id}")
-    public ResponseEntity<Object[]> collectConfirmationInfo(@PathVariable("id") long confirmationId){
-        return ResponseEntity.ok().body(confirmationService.collectConfirmationInfo(confirmationId));
-    }
+//    @GetMapping("/confirmationdetail/{id}")
+//    public ResponseEntity<Object[]> collectConfirmationInfo(@PathVariable("id") long confirmationId){
+//        return ResponseEntity.ok().body(confirmationService.collectConfirmationInfo(confirmationId));
+//    }
 
     //delete confimation by id
     @DeleteMapping("/{confirmationid}")
@@ -50,9 +50,9 @@ public class ConfirmationController {
     }
 
     //update confimation by id
-    @PatchMapping("/{id}")
-    public ResponseEntity<String>  updateConfirmationById(@PathVariable("id") long id, @RequestBody ConfirmationDto confirmationDto){
-        return ResponseEntity.ok().body(confirmationService.updateConfirmationById(id,confirmationDto));
-    }
+//    @PatchMapping("/{id}")
+//    public ResponseEntity<String>  updateConfirmationById(@PathVariable("id") long id, @RequestBody ConfirmationDto confirmationDto){
+//        return ResponseEntity.ok().body(confirmationService.updateConfirmationById(id,confirmationDto));
+//    }
 
 }

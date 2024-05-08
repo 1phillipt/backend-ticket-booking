@@ -20,6 +20,7 @@ public class TicketController {
     //saves newly created ticket
     @PostMapping
     public ResponseEntity<String> save(@RequestBody TicketDto ticketDto){
+        System.out.println("in ticket controller");
         return ResponseEntity.ok().body(ticketService.save(ticketDto));
     }
     @GetMapping

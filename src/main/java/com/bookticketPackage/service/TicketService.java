@@ -27,7 +27,7 @@ public class TicketService {
         if(optionalTicket.isPresent()){
             return "user already exist";
         }else{
-            ticketRepository.save(optionalTicket.get());
+            ticketRepository.save(TicketMapper.ticketDtoToTicket(ticketDto));
             return "Ticket created";
         }
     }
