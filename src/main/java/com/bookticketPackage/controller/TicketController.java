@@ -31,6 +31,14 @@ public class TicketController {
     public ResponseEntity<TicketDto> getByTicketId(@PathVariable("id") long id){
         return ResponseEntity.ok().body(ticketService.getByTicketId(id));
     }
+
+    //returns tickets by event and seatId
+    @GetMapping("/{eventId}/{seatNumber}")
+    public ResponseEntity<TicketDto> getByTicketId(@PathVariable("eventId") long eventId, @PathVariable("seatNumber") String seatNumber){
+        return ResponseEntity.ok().body(ticketService.getByEventIdAndSeatNumber(eventId,seatNumber));
+    }
+
+
     @DeleteMapping("/{id}")
     public ResponseEntity<String>   deleteTicketById(@PathVariable("id") long id){
         return ResponseEntity.ok().body(ticketService.deleteTicketById(id));

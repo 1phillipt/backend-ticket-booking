@@ -22,7 +22,7 @@ public class Confirmation {
     @Column(name = "confirmation_id")
     private long confirmationId;
 
-    private Date confimationDate;
+    private Date confirmationDateAndTime;
 
     private long ticketId;
 

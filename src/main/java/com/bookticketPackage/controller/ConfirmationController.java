@@ -21,7 +21,6 @@ public class ConfirmationController {
 
     @PostMapping
     public ResponseEntity<String> save(@RequestBody ConfirmationDto confirmationDto){
-
         return  ResponseEntity.ok().body(confirmationService.save(confirmationDto));
     }
 

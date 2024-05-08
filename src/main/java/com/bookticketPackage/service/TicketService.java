@@ -66,4 +66,8 @@ public class TicketService {
                 throw new RuntimeException("ticket id not found");
         }
     }
+
+    public TicketDto getByEventIdAndSeatNumber(long eventId, String seatNumber) {
+        return ticketRepository.getByEventIdAndSeatNumber(eventId,seatNumber);
+    }
 }

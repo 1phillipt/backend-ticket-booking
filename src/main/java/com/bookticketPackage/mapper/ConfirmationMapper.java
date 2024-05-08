@@ -16,7 +16,7 @@ public class ConfirmationMapper {
     public static ConfirmationDto confirmationToConfirmationDto(Confirmation confirmation){
         return ConfirmationDto.builder()
                 .confirmationId(confirmation.getConfirmationId())
-                .confirmationDate(confirmation.getConfimationDate())
+                .confirmationDate(confirmation.getConfirmationDateAndTime())
                 .customerId(confirmation.getCustomerId())
                 .ticketId(confirmation.getTicketId())
                 .build();
@@ -24,7 +24,7 @@ public class ConfirmationMapper {
     public static Confirmation confirmationDtoToConfirmation(ConfirmationDto confirmationDto){
         return   Confirmation.builder()
                 .confirmationId(confirmationDto.getConfirmationId())
-                .confimationDate(confirmationDto.getConfirmationDate())
+                .confirmationDateAndTime(confirmationDto.getConfirmationDate())
                 .customerId(confirmationDto.getCustomerId())
                 .ticketId(confirmationDto.getTicketId())
                 .build();
