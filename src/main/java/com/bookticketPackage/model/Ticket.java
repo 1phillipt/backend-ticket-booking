@@ -18,10 +18,9 @@ public class Ticket {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long ticketId;
-
     private long eventId;
     private long customerId;
-    private long seatId;
+    private String seatNumber;
     private long paymentInfoId;
 
 //    @ManyToOne(optional = false)

@@ -20,6 +20,7 @@ public class TicketMapper {
                 .ticketId(ticket.getTicketId())
                 .eventId(ticket.getEventId())
                 .customerId(ticket.getCustomerId())
+                .seatNumber(ticket.getSeatNumber())
                 .paymentInfoId(ticket.getPaymentInfoId())
                 .build();
     }
@@ -29,7 +30,7 @@ public class TicketMapper {
                 .ticketId(ticketDto.getTicketId())
                 .eventId(ticketDto.getEventId())
                 .customerId(ticketDto.getCustomerId())
-                .seatId(ticketDto.getSeatId())
+                .seatNumber(ticketDto.getSeatNumber())
                 .paymentInfoId(ticketDto.getPaymentInfoId())
                 .build();
     }

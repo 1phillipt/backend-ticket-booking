@@ -16,7 +16,7 @@ public class TicketDto {
     private long ticketId;
     private long eventId;
     private long customerId;
-    private long seatId;
+    private String seatNumber;
     private long paymentInfoId;
 }
 
