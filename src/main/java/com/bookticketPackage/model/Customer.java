@@ -2,7 +2,9 @@ package com.bookticketPackage.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.*;
 
 import java.util.List;
@@ -19,15 +21,15 @@ public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long customerId;
-    @NotNull
+    @NotEmpty @NotNull
     private String fname;
-    @NotNull
+    @NotEmpty @NotNull
     private String lname;
-    @NotNull
+    @NotEmpty @Email
     private String email;
-    @NotNull
+    @NotEmpty@Size(min = 10) @NotNull
     private String phoneNumber;
-    @NotNull
+    @NotEmpty @Size(min = 6) @NotNull
     private String password;
 
 
