@@ -8,6 +8,9 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import java.util.List;
+import java.util.Optional;
+
 public interface TicketRepository extends JpaRepository<Ticket,Long > {
 
     @Query(value = "SELECT * FROM  ticket_booking.ticket WHERE event_Id =:eventId AND seat_number =:seatNumber", nativeQuery = true)
@@ -18,4 +21,6 @@ public interface TicketRepository extends JpaRepository<Ticket,Long > {
     @Query(value = "UPDATE Seat s SET s.available = 0 WHERE s.seatNumber = :seatNumber")
     void setSeatAvailableToNone(String seatNumber);
 
+    @Query(value = "SELECT * FROM  ticket_booking.ticket WHERE customer_id =:customerId", nativeQuery = true)
+    List<Ticket> findByCustomerID(@Param("customerId") long customerId);
 }

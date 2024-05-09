@@ -27,9 +27,10 @@ public class TicketController {
     public ResponseEntity<List<TicketDto>> getAllTickets(){
         return ResponseEntity.ok().body(ticketService.getAllTickets());
     }
-    @GetMapping("/{id}")
-    public ResponseEntity<TicketDto> getByTicketId(@PathVariable("id") long id){
-        return ResponseEntity.ok().body(ticketService.getByTicketId(id));
+    @GetMapping("/{customerId}")
+    public ResponseEntity<List<TicketDto>> getByTicketId(@PathVariable("customerId") long customerId){
+        System.out.println( ResponseEntity.ok().body(ticketService.getTicketBycustomerId(customerId)));
+        return ResponseEntity.ok().body(ticketService.getTicketBycustomerId(customerId));
     }
 
     //returns tickets by event and seatId

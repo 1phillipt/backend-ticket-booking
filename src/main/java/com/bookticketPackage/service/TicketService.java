@@ -42,13 +42,8 @@ public class TicketService {
                 .collect(Collectors.toList());
     }
 
-    public TicketDto getByTicketId(long id) {
-        Optional<Ticket> optionalTicket = ticketRepository.findById(id);
-        if(optionalTicket.isPresent()){
-            return TicketMapper.ticketToTicketDto(optionalTicket.get());
-        }else{
-            throw new RuntimeException("ticket id not found");
-        }
+    public List<TicketDto> getTicketBycustomerId(long customerId) {
+        return ticketRepository.findByCustomerID(customerId).stream().map(ticket -> TicketMapper.ticketToTicketDto(ticket)).collect(Collectors.toList());
     }
 
     public String deleteTicketById(long id) {
