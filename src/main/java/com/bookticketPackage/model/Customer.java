@@ -21,13 +21,13 @@ public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long customerId;
-    @NotEmpty @NotNull
+    @NotEmpty @NotNull  @NotEmpty
     private String fname;
-    @NotEmpty @NotNull
+    @NotEmpty @NotNull  @NotEmpty
     private String lname;
-    @NotEmpty @Email
+    @Email @NotNull  @NotEmpty
     private String email;
-    @NotEmpty@Size(min = 10) @NotNull
+    @NotEmpty @Size(min = 10) @NotNull
     private String phoneNumber;
     @NotEmpty @Size(min = 6) @NotNull
     private String password;

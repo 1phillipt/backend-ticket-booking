@@ -49,6 +49,7 @@ public class CustomerController {
     // http://localhost:8081/api/v1/customer/?
     @PatchMapping("/{customerId}")
     public ResponseEntity<String> updateCustomer(@PathVariable("customerId") long customerId, @RequestBody CustomerDto customerDto){
+        System.out.println(customerId);
         return ResponseEntity.ok(customerService.updateCustomer(customerId, customerDto));
     }
 

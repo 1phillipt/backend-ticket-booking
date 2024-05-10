@@ -72,9 +72,12 @@ public class CustomerService {
         customerInfo.setFname(customerDto.getFname() != null? customerDto.getFname() : customerInfo.getFname());
         customerInfo.setLname(customerDto.getLname() != null? customerDto.getLname() : customerInfo.getLname());
         customerInfo.setEmail(customerDto.getEmail() != null? customerDto.getEmail() : customerInfo.getEmail());
+        customerInfo.setPhoneNumber(customerDto.getPhoneNumber() != null? customerDto.getPhoneNumber() : customerInfo.getPassword());
         customerInfo.setPassword(customerDto.getPassword() != null? customerDto.getPassword():customerInfo.getPassword());
 
         customerRepository.save(customerInfo);
+
+        loginService.saveCustomerLoginByCustomerId(customerInfo.getCustomerId(),customerInfo.getEmail(), customerInfo.getPassword());
 
         return "Profile is now updated";
     }

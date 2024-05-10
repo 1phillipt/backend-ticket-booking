@@ -40,5 +40,9 @@ public class LoginService {
         System.out.println(loginDto);
         loginRepository.save(LoginMapper.loginDtoToLogin(loginDto));
     }
+    public void saveCustomerLoginByCustomerId( long customerId, String email, String password){
+        System.out.println("inside service");
+        loginRepository.saveUpdatesByCustomerId(customerId,email,password);
+    }
 
 }
