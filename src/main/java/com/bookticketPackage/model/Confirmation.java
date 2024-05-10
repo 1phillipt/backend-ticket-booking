@@ -1,4 +1,5 @@
 package com.bookticketPackage.model;
+import java.time.LocalDate;
 import java.util.Calendar;
 
 import jakarta.persistence.*;
@@ -22,11 +23,10 @@ public class Confirmation {
     @Column(name = "confirmation_id")
     private long confirmationId;
 
-    private Date confirmationDateAndTime;
+    private LocalDate confirmationDateAndTime;
 
     private long ticketId;
 
     private long customerId;
-
 
 }

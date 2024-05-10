@@ -1,21 +1,28 @@
 package com.bookticketPackage.service;
 
+import com.bookticketPackage.dto.ConfirmationDto;
 import com.bookticketPackage.dto.TicketDto;
 import com.bookticketPackage.mapper.TicketMapper;
+import com.bookticketPackage.model.Confirmation;
 import com.bookticketPackage.model.Ticket;
 import com.bookticketPackage.repository.TicketRepository;
+import org.hibernate.annotations.CurrentTimestamp;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
 public class TicketService {
-
+    LocalDate currentDate = LocalDate.now();
     private TicketRepository ticketRepository;
+    private ConfirmationService confirmationService;
 
-    public TicketService(TicketRepository ticketRepository){
+    public TicketService(TicketRepository ticketRepository, ConfirmationService confirmationService){
+        this.confirmationService = confirmationService;
         this.ticketRepository = ticketRepository;
     }
 
@@ -29,6 +36,8 @@ public class TicketService {
         }else{
             ticketRepository.save(TicketMapper.ticketDtoToTicket(ticketDto));
 
+            //saves confimation when new ticket is created
+            confirmationService.save(ConfirmationDto.builder().ticketId(ticketDto.getTicketId()).customerId(ticketDto.getCustomerId()).confirmationDate(currentDate).build());
 
         }
         ticketRepository.setSeatAvailableToNone(ticketDto.getSeatNumber());

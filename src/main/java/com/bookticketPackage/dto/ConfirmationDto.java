@@ -7,6 +7,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.util.Date;
 @Builder
 @Data
@@ -15,8 +16,7 @@ import java.util.Date;
 public class ConfirmationDto {
 
     private long confirmationId;
-    private Date confirmationDate;
-    private String confirmationCode;
+    private LocalDate confirmationDate;
     private long   ticketId;
     private long customerId;
 }

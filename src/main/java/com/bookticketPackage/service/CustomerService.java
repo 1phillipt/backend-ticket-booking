@@ -76,7 +76,7 @@ public class CustomerService {
 
         customerRepository.save(customerInfo);
 
-        return "infomation are updated";
+        return "Profile is now updated";
     }
 
     public String saveCustomers(List<CustomerDto> listOfCustomers) {
